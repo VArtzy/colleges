@@ -11,13 +11,13 @@ typedef struct {
     char *judul;
     unsigned char terbit;
     tipe tipe;
-}  item;
+} __attribute__((packed))item;
 
 typedef struct {
     char judul[100];
     int terbit;
     enum { BUKU, MAJALAH } tipe;
-}  item_unoptimize;
+} item_unoptimize;
 
 int main() {
     const unsigned short MIN = 1900;
