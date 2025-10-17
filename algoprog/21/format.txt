@@ -1,0 +1,18 @@
+Format file yang dipakai
+
+Jenis file: text file (file teks)
+
+format struktur: nomorRegistrasi|nama|umur
+
+contoh file: ./data.siswa
+
+spesifikasi format:
+- Delimiter: karakter pipe (|) pemisah field/member
+- Encoding: menggunakan UTF-8
+- Record Delimiter: newline (\n) untuk record
+
+- Sederhana
+- Efisien
+- Mudah dipahami/readable
+- Bisa dibaca program lainnya dengan mudah
+- Hemat ruang sehingga hemat memori juga dalam program
