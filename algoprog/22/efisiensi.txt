@@ -1,3 +1,79 @@
-10 data:
-100 data:
-1000 data:
+Farrel Nikoson: Secara konseptual, algoritma pencarian linear search yang digunakan dari tugas adalah algoritma yang berjalan secara sequantial scan (dibanding satu per satu dari setiap elemen ke kunci pencarian hingga ketemu) yang memiliki time complexity (kompleksitas waktu) sebesar O(1) pada best case dan O(n) pada worst/avg case. Ini adalah kompleksitas waktu linear.
+
+Artinya, setiap n data ditambahkan menambah lama proses eksekusi sebanyak n. Juga cepatnya pencarian bergantung pada posisi letak data. Semakin cepat ditemukan data, semakin cepat juga pencarian selesai (misal: letak data pada baris pertama)
+
+Maka secara teori:
+
+Pemisalan, scan 1 data = 1 milidetik
+
+10 data: ~10 milidetik
+100 data: ~100 milidetik
+1000 data: ~1000 milidetik (1 detik)
+
+Diawal dan dengan data yang sedikit, mungkin program masif efektif, sederhana dan efisien. Namun semakin banyak data yang ada, akan membuat lama proses bertambah sebanyak data yang ditambahkan.
+
+Bayangkan jika sebuah sekolah memiliki 1.000 siswa, mungkin diawal program masih lancar. Hingga sekolah sampai pada angkatan ke 30 dengan 30.000 siswa, maka program akan terasa lambat.
+
+Bandingkan awalnya program berjalan hanya sekitar 1 detik, kini sekali mencari data siswa lewat program memakan waktu 30 detik. Tentu semakin lama membuat program menjadi lambat, tidak efektif dan tidak nyaman digunakan. Sehingga memerlukan algoritma yang lebih cepat, efisien dan optimal untuk kasus siswa lebih banyak.
+
+BONUS (Test konkrit):
+abstrak: ternyata teori benar. semakin bertambah data, semakin lama proses pencarian data. Walaupun kurang tepat karena tidak 100% sesuai linear (1:1) sebab seharusnya arsitektur komputer menangani data lebih banyak dengan lebih efisien.
+warning: hanya 1 sampel tes (tidak menyimpulkan hasil secara umum), juga biasanya arsitektur komputer menangani dengan hasil yang berbeda
+format: 1 best case 2 avg case 3 worst case 4 tidak ketemu (dipisah dengan newline)
+
+10 Siswa:
+    Cari siswa dengan nama: Nama: Wati
+    Umur: 15
+    No registrasi: 230101
+    Waktu eksekusi: 0.000080 detik
+
+    Cari siswa dengan nama: Nama: Nina
+    Umur: 15
+    No registrasi: 230106
+    Waktu eksekusi: 0.000083 detik
+
+    Cari siswa dengan nama: Nama: Ayu
+    Umur: 18
+    No registrasi: 230110
+    Waktu eksekusi: 0.000082 detik
+
+    Cari siswa dengan nama: Data siswa dengan nama Tidakada tidak ditemukan!
+    Waktu eksekusi: 0.000084 detik
+
+100 Siswa:
+    Cari siswa dengan nama: Nama: Lina
+    Umur: 16
+    No registrasi: 230101
+    Waktu eksekusi: 0.000083 detik
+
+    Cari siswa dengan nama: Nama: Bambang50
+    Umur: 17
+    No registrasi: 230150
+    Waktu eksekusi: 0.000070 detik
+
+    Cari siswa dengan nama: Nama: Hana9
+    Umur: 18
+    No registrasi: 230200
+    Waktu eksekusi: 0.000112 detik
+
+    Cari siswa dengan nama: Data siswa dengan nama Tidakada tidak ditemukan!
+    Waktu eksekusi: 0.000092 detik
+
+1000 Siswa:
+    Cari siswa dengan nama: Nama: Oki
+    Umur: 19
+    No registrasi: 230101
+    Waktu eksekusi: 0.000084 detik
+
+    Cari siswa dengan nama: Nama: Lina2
+    Umur: 19
+    No registrasi: 230601
+    Waktu eksekusi: 0.000176 detik
+
+    Cari siswa dengan nama: Nama: Nina60
+    Umur: 18
+    No registrasi: 231100
+    Waktu eksekusi: 0.000282 detik
+
+    Cari siswa dengan nama: Data siswa dengan nama Tidakada tidak ditemukan!
+    Waktu eksekusi: 0.000302 detik
