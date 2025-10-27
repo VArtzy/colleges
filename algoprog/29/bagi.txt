@@ -1,0 +1,18 @@
+Anggota 1:
+Input Data Buku Baru
+Exit (Simpan data terbaru & keluar)
+
+Anggota 2:
+View History Transaksi Penjualan
+Delete History (Hapus Histori Penjualan Tertentu)
+
+Anggota 3:
+View Buku (Seluruh Data Buku yang Tersedia)
+Delete Buku (Hapus Data Buku Tertentu)
+
+Anggota 4:
+Input Transaksi Penjualan 
+Dokumentasi, integrasi dan pengumpulan tugas
+
+Anggota 5:
+Sort Buku (berdasarkan nama dan harga)
