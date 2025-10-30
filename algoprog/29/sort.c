@@ -1,11 +1,13 @@
 #include <stdio.h>
 #include <string.h>
+
 typedef struct {
     char name[100];
     char jenis[50];
     char kode[10];
     int price;
 } Buku;
+
 void sortNama(Buku book[], int n) {
 for (int i = 0; i < n - 1; i++) {
     for (int j = 0; j < n - i - 1; j++) {
