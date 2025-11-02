@@ -1,0 +1,4 @@
+bk001|PemrogramanC|Teknik|75000.00
+bk002|AlgoritmaDasar|Teknik|82000.00
+bk003|MatematikaDiskrit|Matematika|65000.00
+bk004|StrukturData|Teknik|91000.00

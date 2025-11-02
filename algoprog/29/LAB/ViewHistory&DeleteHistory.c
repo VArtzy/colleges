@@ -1,96 +1,60 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-struct History {
-    char kodeBuku[10];
-    int jumlahTerjual;
-    double totalHarga;
-};
+#include "project.h"
 
-
-void viewHistory() {
-    FILE *file = fopen("history.txt", "r");
-    if (file == NULL) {
+/* Menampilkan seluruh history transaksi yang tersimpan */
+void viewHistory(const history_t *history, size_t count) {
+    if (history == NULL || count == 0) {
         printf("Belum ada data history.\n");
         return;
     }
 
-    struct History data;
-    int index = 1;
-
     printf("\n=== HISTORY TRANSAKSI PENJUALAN ===\n");
 
-    while (fscanf(file, "%s %d %lf",
-                  data.kodeBuku,
-                  &data.jumlahTerjual,
-                  &data.totalHarga) == 3) {
-        printf("%d. Kode Buku: %s | Jumlah: %d | Total Harga: %.2lf\n",
-               index, data.kodeBuku, data.jumlahTerjual, data.totalHarga);
-        index++;
+    for (size_t i = 0; i < count; ++i) {
+        printf("%zu. Kode Buku: %s | Jumlah: %d | Total Harga: %.2f\n",
+               i + 1,
+               history[i].kode,
+               history[i].jumlah,
+               history[i].total);
     }
-
-    if (index == 1) {
-        printf("Belum ada transaksi yang tercatat.\n");
-    }
-
-    fclose(file);
 }
 
 
-void deleteHistory() {
-    FILE *file = fopen("history.txt", "r");
-    if (file == NULL) {
+/* Menghapus entri history tertentu berdasarkan pilihan pengguna */
+void deleteHistory(history_t *history, size_t *count) {
+    if (history == NULL || *count == 0) {
         printf("File history.txt belum ada atau kosong.\n");
         return;
     }
 
-    struct History history[100];
-    int count = 0;
-
-    while (fscanf(file, "%s %d %lf",
-                  history[count].kodeBuku,
-                  &history[count].jumlahTerjual,
-                  &history[count].totalHarga) == 3) {
-        count++;
-    }
-    fclose(file);
-
-    if (count == 0) {
-        printf("Tidak ada data untuk dihapus.\n");
-        return;
-    }
-
     printf("\n=== DAFTAR HISTORY PENJUALAN ===\n");
-    for (int i = 0; i < count; i++) {
-        printf("%d. %s | Jumlah: %d | Total Harga: %.2lf\n",
+    for (size_t i = 0; i < *count; i++) {
+        printf("%zu. %s | Jumlah: %d | Total Harga: %.2f\n",
                i + 1,
-               history[i].kodeBuku,
-               history[i].jumlahTerjual,
-               history[i].totalHarga);
+               history[i].kode,
+               history[i].jumlah,
+               history[i].total);
     }
 
     int hapus;
     printf("\nMasukkan nomor data yang ingin dihapus: ");
-    scanf("%d", &hapus);
+    if (scanf("%d", &hapus) != 1) {
+        printf("Input tidak valid.\n");
+        int ch;
+        while ((ch = getchar()) != '\n' && ch != EOF) {}
+        return;
+    }
 
-    if (hapus < 1 || hapus > count) {
+    if (hapus < 1 || (size_t)hapus > *count) {
         printf("Nomor tidak valid.\n");
         return;
     }
 
-    for (int i = hapus - 1; i < count - 1; i++) {
+    for (size_t i = (size_t)(hapus - 1); i < *count - 1; i++) {
         history[i] = history[i + 1];
     }
-    count--;
+    (*count)--;
 
-    file = fopen("history.txt", "w");
-    for (int i = 0; i < count; i++) {
-        fprintf(file, "%s %d %.2lf\n",
-                history[i].kodeBuku,
-                history[i].jumlahTerjual,
-                history[i].totalHarga);
-    }
-    fclose(file);
-
-    printf("Data Successfully delete..\n");
+    printf("Data successfully delete.\n");
 }

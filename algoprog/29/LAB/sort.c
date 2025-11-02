@@ -1,48 +1,47 @@
 #include <stdio.h>
 #include <string.h>
 
-typedef struct {
-    char name[100];
-    char jenis[50];
-    char kode[10];
-    int price;
-} Buku;
+#include "project.h"
 
-void sortNama(Buku book[], int n) {
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (strcmp(book[j].name, book[j + 1].name) > 0) {
-                Buku temp = book[j];
+/* Mengurutkan buku berdasarkan nama secara ascending (bubble sort) */
+static void sortNama(buku_t book[], size_t n) {
+    for (size_t i = 0; i < n - 1; i++) {
+        for (size_t j = 0; j < n - i - 1; j++) {
+            if (strcmp(book[j].nama, book[j + 1].nama) > 0) {
+                buku_t temp = book[j];
                 book[j] = book[j + 1];
                 book[j + 1] = temp;
             }
         }
     }
 }
-void sortHarga(Buku book[], int n) {
-    for (int i = 0; i < n - 1; i++) {
-        int maxIndex = i;
-        for (int j = i + 1; j < n; j++) {
-            if (book[j].price > book[maxIndex].price) {
+
+/* Mengurutkan buku berdasarkan harga secara descending (selection sort) */
+static void sortHarga(buku_t book[], size_t n) {
+    for (size_t i = 0; i < n - 1; i++) {
+        size_t maxIndex = i;
+        for (size_t j = i + 1; j < n; j++) {
+            if (book[j].harga > book[maxIndex].harga) {
                 maxIndex = j;
             }
         }
         if (maxIndex != i) {
-            Buku temp = book[i];
+            buku_t temp = book[i];
             book[i] = book[maxIndex];
             book[maxIndex] = temp;
         }
     }
 }
 
-void sortMenu(Buku book[], int n) {
-    Buku sorted[n];
-    memcpy(sorted, book, n * sizeof(Buku));
-
-    if (n == 0) {
-        printf("Tidak ada data buku");
+/* Menampilkan menu sorting dan mengeksekusi pilihan pengguna */
+void sortMenu(const buku_t *book, size_t n) {
+    if (book == NULL || n == 0) {
+        printf("Tidak ada data buku\n");
         return;
     }
+
+    buku_t sorted[n];
+    memcpy(sorted, book, n * sizeof(buku_t));
 
     int pilihan;
     do {
@@ -51,20 +50,35 @@ void sortMenu(Buku book[], int n) {
         printf("2. Urutkan berdasarkan Harga (Descending) [Selection Sort]\n");
         printf("3. Kembali ke Menu Utama\n");
         printf("Pilih menu: ");
-        scanf("%d", &pilihan);
-        getchar();
+        if (scanf("%d", &pilihan) != 1) {
+            printf("Input tidak valid. Coba lagi.\n");
+            int ch;
+            while ((ch = getchar()) != '\n' && ch != EOF) {}
+            pilihan = 0;
+            continue;
+        }
+        int ch;
+        while ((ch = getchar()) != '\n' && ch != EOF) {}
 
         switch (pilihan) {
             case 1:
                 sortNama(sorted, n);
-                for (int i = 0; i < n; i++) {
-                    printf("Name: %s\nJenis: %s\nKode: %s\nPrice: %d\n\n", sorted[i].name, sorted[i].jenis, sorted[i].kode, sorted[i].price);
+                for (size_t i = 0; i < n; i++) {
+                    printf("Nama: %s\nJenis: %s\nKode: %s\nHarga: %.2f\n\n",
+                           sorted[i].nama,
+                           sorted[i].jenis,
+                           sorted[i].kode,
+                           sorted[i].harga);
                 }
                 break;
             case 2:
                 sortHarga(sorted, n);
-                for (int i = 0; i < n; i++) {
-                    printf("Name: %s\nJenis: %s\nKode: %s\nPrice: %d\n\n", sorted[i].name, sorted[i].jenis, sorted[i].kode, sorted[i].price);
+                for (size_t i = 0; i < n; i++) {
+                    printf("Nama: %s\nJenis: %s\nKode: %s\nHarga: %.2f\n\n",
+                           sorted[i].nama,
+                           sorted[i].jenis,
+                           sorted[i].kode,
+                           sorted[i].harga);
                 }
                 break;
             case 3:
