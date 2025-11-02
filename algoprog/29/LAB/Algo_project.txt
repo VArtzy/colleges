@@ -1,0 +1,237 @@
+/*Felix 2902701533
+#include <stdio.h>
+#include <string.h>
+
+#define MAX_BUKU 100
+#define MAX_HISTORY 100
+
+// Structure to represent a book
+struct Buku {
+    Char kode_buku;
+    char nama_buku;
+    char jenis_buku;
+    float harga_buku;
+};
+
+// Structure to open a history
+struct History {
+    char kode_buku;
+    float jumlah_terjual;
+    float total_harga;
+};
+
+// Global array to store book and a counter for the number of book
+struct Buku bukuList[MAX_BUKU];
+int bukuCount = 0;
+
+struct History historyList[MAX_HISTORY];
+int historyCount = 0;
+
+// Function to load book data from a databuku.txt
+void loadDataFromFile() {
+    FILE *file = fopen("databuku.txt", "r");
+    if (file == NULL) {
+        printf("Error opening file!\n");
+        return;
+    }
+
+    while (fscanf(file, "%s %s %s %f", &bukuList[bukuCount].kode_buku, &bukuList[bukuCount].name_buku, &bukuList[bukuCount].jenis_buku, &bukuList[bukuCount].harga_buku) != EOF) {
+        bukuCount++;
+    }
+
+    fclose(file);
+}
+
+// Function to load book data from a history.txt
+void loadDataFromHistory() {
+    FILE *file = fopen("history.txt", "r");
+    if (file == NULL) {
+        printf("Error opening file!\n");
+        return;
+    }
+
+    while (fscanf(file, "%s %f %f", &historyList[historyCount].kode_buku, &historyList[historyCount].jumlah_terjual, &historyList[historyCount].total_harga) != EOF) {
+        bukuCount++;
+    }
+
+    fclose(file);
+}
+
+// Function to save databuku to a file
+void saveDataToFile() {
+    FILE *file = fopen("databuku.txt", "w");
+    if (file == NULL) {
+        printf("Error opening file!\n");
+        return;
+    }
+
+    for (int i = 0; i < bukuCount; i++) {
+        fprintf(file, "%s %s %s %f\n", bukuList[i].kode_buku, bukuList[i].nama_buku, bukuList[i].jenis_buku, bukuList[i].harga_buku);
+    }
+
+    fclose(file);
+}
+
+// Function to save history to a file
+void saveHistoryToFile() {
+    FILE *file = fopen("history.txt", "w");
+    if (file == NULL) {
+        printf("Error opening file!\n");
+        return;
+    }
+
+    for (int i = 0; i < historyCount; i++) {
+        fprintf(file, "%s %f %f\n", historyList[i].kode_buku, historyList[i].jumlah_terjual, historyList[i].total_harga);
+    }
+
+    fclose(file);
+}
+
+// Function to add new book data
+void addBuku() {
+    char kode_buku,nama_buku[50], jenis_buku;     
+    float harga_buku;
+
+    printf("Masukan kode buku: ");
+    scanf("%s", &kode_buku);
+    printf("Masukan nama buku: ");
+    scanf("%s", &nama_buku);
+    printf("Masukan jenis buku: ");
+    scanf("%s", &jenis_buku);
+    printf("Masukan harga buku: ");
+    scanf("%f", &harga_buku);
+
+    strcpy(bukuList[bukuCount].kode_buku, kode_buku);
+    strcpy(bukuList[bukuCount].nama_buku, nama_buku);
+    strcpy(bukuList[bukuCount].jenis_buku, jenis_buku);
+    bukuList[bukuCount].harga_buku = harga_buku;
+    bukuCount++;
+
+    saveDataToFile();
+    printf("Student added successfully!\n");
+}
+
+// Function to add new history data
+void addHistory() {
+    char kode_buku;     
+    float jumlah_terjual, total_harga;
+
+    printf("Masukan kode buku: ");
+    scanf("%s", &kode_buku);
+    printf("Masukan jumlah terjual: ");
+    scanf("%f", &jumlah_terjual);
+    printf("Masukan total harga: ");
+    scanf("%f", &total_harga);
+
+    strcpy(historyList[historyCount].kode_buku, kode_buku);
+    historyList[historyCount].jumlah_terjual, jumlah_terjual;
+    historyList[historyCount].total_harga, total_harga;
+    historyCount++;
+
+    saveHistoryToFile();
+    printf("History added successfully!\n");
+}
+
+// Function to delete a History
+void deleteHistory() {
+    
+    printf("Masukan kode buku untuk menghapus: ");
+    scanf("%s", &kode_buku);
+
+    int found = 0;
+    for (int i = 0; i < historyCount; i++) {
+        if (strcpyList[i].kode_buku == kode_buku) {
+            // Shift all subsequent history to the left
+            for (int j = i; j < historyCount - 1; j++) {
+                historyList[j] = historyList[j + 1];
+            }
+            historyCount--;
+            saveHistoryToFile();
+            printf("History deleted successfully!\n");
+            found = 1;
+            break;
+        }
+    }
+
+    if (!found) {
+        printf("History tidak ditemukan\n");
+    }
+}
+
+// Function to delete a book
+void deleteBuku() {
+    
+    printf("Masukan kode buku untuk menghapus: ");
+    scanf("%s", &kode_buku);
+
+    int found = 0;
+    for (int i = 0; i < bukuCount; i++) {
+        if (strcpyList[i].kode_buku == kode_buku) {
+            // Shift all subsequent book to the left
+            for (int j = i; j < bukuCount - 1; j++) {
+                bukuList[j] = bukuList[j + 1];
+            }
+            bukuCount--;
+            saveDataToFile();
+            printf("Buku berhasil dihapus\n");
+            found = 1;
+            break;
+        }
+    }
+
+    if (!found) {
+        printf("Buku tidak ditemukan\n");
+    }
+}
+
+// Function to display the menu and handle user choices
+void menu() {
+    int choice;
+    while (1) {
+        printf("\nMenu Utama:\n");
+        printf("1. Input data buku baru\n");
+        printf("2. Lihat history transaksi penjualan\n");
+        printf("3. Lihat seluruh data buku yang tersedia\n");
+        printf("4. Hapus history penjualan tertentu\n");
+        printf("5. Hapus data buku tertentu\n");
+        printf("6. Exit\n");
+        printf("7. Input transaksi penjualan\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                addBuku();
+                break;
+            case 2:
+                LoadDataFromHistory();
+                break;
+            case 3:
+                LoadDataFromFile();
+                break;
+            case 4:
+		deleteHistory();
+		break;
+	    case 5:
+		deleteBuku();
+		break;
+	    case 6:
+		printf("Exiting program...\n");
+		saveDataToFile();
+		saveHistoryToFile();
+		return;
+	    case 7:
+		addHistory();
+		break;			
+            default:
+                printf("Invalid choice! Please try again.\n");
+        }
+    }
+}
+
+int main() {
+    loadDataFromFile();
+    menu();
+    return 0;
+}
+
