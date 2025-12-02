@@ -8,9 +8,9 @@ class Email {
     public String constructEmail(User recipient, String body) {
         String str = "";
         str += recipient.getNiceUserName();
-        str += "\n";
+        str += "\n\n";
         str += body;
-        str += "\n";
+        str += "\n\n";
         str += signature;
         return str;
     }
