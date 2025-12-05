@@ -1,0 +1,24 @@
+Ciri-ciri pendekatan procedural
+Data terpisah dari fungsi.
+Tidak ada encapsulation.
+Mudah dibuat untuk sistem kecil.
+
+Ciri pendekatan OOP
+Data dan perilaku disatukan dalam objek.
+Cocok untuk sistem besar dan bertahap.
+
+
+Procedural cocok bila:
+Project kecil.
+Logic sederhana.
+Kecepatan coding penting.
+Tidak banyak jenis entitas.
+OOP cocok bila:
+Sistem bertumbuh (scalable).
+Ada banyak entitas: Item, Supplier, Order, Transaction.
+Anda ingin kode mudah dipelihara.
+Dikerjakan tim.
+Dalam konteks sistem pengelolaan inventaris, OOP menjadi pilihan lebih baik karena:
+Entitasnya banyak dan jelas.
+Mudah menambah fitur (contoh: kategori, harga, supplier).
+Mudah digunakan ulang dan dikembangkan.
