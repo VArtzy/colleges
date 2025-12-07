@@ -13,11 +13,13 @@ Project kecil.
 Logic sederhana.
 Kecepatan coding penting.
 Tidak banyak jenis entitas.
+
 OOP cocok bila:
 Sistem bertumbuh (scalable).
 Ada banyak entitas: Item, Supplier, Order, Transaction.
 Anda ingin kode mudah dipelihara.
 Dikerjakan tim.
+
 Dalam konteks sistem pengelolaan inventaris, OOP menjadi pilihan lebih baik karena:
 Entitasnya banyak dan jelas.
 Mudah menambah fitur (contoh: kategori, harga, supplier).

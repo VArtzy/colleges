@@ -77,3 +77,4 @@ public class InventoryOOP {
         inv.listItems();
     }
 }
+class BankAccount { private double balance; // enkapsulasi: data dilindungi public void deposit(double amt) { // abstraksi: user cukup tahu fungsi deposit balance += amt; } public double getBalance() { return balance; } }
