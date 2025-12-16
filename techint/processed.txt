@@ -1,0 +1,61 @@
+Statistical profiling result from isolate-0x140008000-1881-v8.log, (33 ticks, 33 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+
+ [C++]:
+   ticks  total  nonlib   name
+
+ [Summary]:
+   ticks  total  nonlib   name
+      0    0.0%    0.0%  JavaScript
+      0    0.0%    0.0%  C++
+      0    0.0%    0.0%  GC
+      0    0.0%          Shared libraries
+     33  100.0%          Unaccounted
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+     33  100.0%  UNKNOWN
+      9   27.3%    JS: ^compileForInternalLoader node:internal/bootstrap/realm:384:27
+      9  100.0%      JS: ^requireBuiltin node:internal/bootstrap/realm:421:24
+      3   33.3%        JS: ~<anonymous> node:tty:1:1
+      3  100.0%          JS: ^compileForInternalLoader node:internal/bootstrap/realm:384:27
+      3  100.0%            JS: ^requireBuiltin node:internal/bootstrap/realm:421:24
+      3   33.3%        JS: ~<anonymous> node:internal/streams/duplex:1:1
+      3  100.0%          JS: ^compileForInternalLoader node:internal/bootstrap/realm:384:27
+      3  100.0%            JS: ^requireBuiltin node:internal/bootstrap/realm:421:24
+      1   11.1%        JS: ~<anonymous> node:net:1:1
+      1  100.0%          JS: ^compileForInternalLoader node:internal/bootstrap/realm:384:27
+      1  100.0%            JS: ^requireBuiltin node:internal/bootstrap/realm:421:24
+      1   11.1%        JS: ~<anonymous> node:internal/streams/operators:1:1
+      1  100.0%          JS: ^compileForInternalLoader node:internal/bootstrap/realm:384:27
+      1  100.0%            JS: ^requireBuiltin node:internal/bootstrap/realm:421:24
+      1   11.1%        JS: ~<anonymous> node:internal/streams/compose:1:1
+      1  100.0%          JS: ^compileForInternalLoader node:internal/bootstrap/realm:384:27
+      1  100.0%            JS: ^requireBuiltin node:internal/bootstrap/realm:421:24
+      8   24.2%    JS: ~<anonymous> node:internal/main/run_main_module:1:1
+      2    6.1%    Builtin: CallApiCallbackGeneric
+      2  100.0%      JS: ~<anonymous> /Users/farrelnikoson/dev/colleges/techint/d.js:1:1
+      2  100.0%        JS: ~<anonymous> node:internal/main/run_main_module:1:1
+      1    3.0%    JS: ~<anonymous> node:internal/streams/writable:1:1
+      1  100.0%      JS: ^compileForInternalLoader node:internal/bootstrap/realm:384:27
+      1  100.0%        JS: ^requireBuiltin node:internal/bootstrap/realm:421:24
+      1  100.0%          JS: ~<anonymous> node:internal/streams/duplex:1:1
+      1  100.0%            JS: ^compileForInternalLoader node:internal/bootstrap/realm:384:27
+      1    3.0%    JS: ^wrappedFn node:internal/errors:535:21
+      1  100.0%      JS: ~Readable.removeListener node:internal/streams/readable:1159:45
+      1  100.0%        Builtin: CallApiCallbackGeneric
+      1  100.0%          JS: ~<anonymous> /Users/farrelnikoson/dev/colleges/techint/d.js:1:1
+      1  100.0%            JS: ~<anonymous> node:internal/main/run_main_module:1:1
+
