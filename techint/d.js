@@ -9,6 +9,6 @@ function containsDuplicate(arr) {
     return false;
 }
 
-console.log(containsDuplicate([3, 4, 2, 4, 5, 1, 2]))
-console.log(containsDuplicate([3, 6, 2, 4, 5, 1, 2]))
-console.log(containsDuplicate([3, 6, 2, 4, 5, 1, 7]))
+console.log(containsDuplicate([3, 4, 2, 4, 5, 1, 2]));
+console.log(containsDuplicate([3, 6, 2, 4, 5, 1, 2]));
+console.log(containsDuplicate([3, 6, 2, 4, 5, 1, 7]));
