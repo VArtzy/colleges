@@ -1,0 +1,41 @@
+Method: processPayment()
+Input:
+bookingId
+amount
+paymentMethod
+Output:
+paymentStatus (misal: SUCCESS / FAILED)
+Pre-condition:
+Booking belum dibayar
+Status booking = UNPAID
+amount > 0
+Post-condition:
+Pembayaran tercatat
+Status booking berubah menjadi PAID
+Notify payment status = SUCCESS
+Logic
+
+
+if booking.status != UNPAID
+    return FAILED
+
+
+if amount < booking.totalPrice
+    return FAILED
+
+
+proses pembayaran melalui paymentMethod
+
+
+payment.status = SUCCESS
+booking.status = PAID
+
+
+return SUCCESS
+
+
+
+Dampak pada Status Booking
+Sebelum processPayment() → UNPAID
+Sesudah berhasil → PAID
+Jika gagal → status booking tidak berubah
