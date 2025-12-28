@@ -5,3 +5,4 @@ if(fork() == 0) {
 } else {
     write(p[1], "hello world\n", 12);
 }
+
