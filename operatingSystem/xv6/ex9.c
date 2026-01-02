@@ -7,4 +7,5 @@ int main() {
     int fd = open("/dir/file", O_WRONLY);
     close(fd);
     mknod("/console", 1, 1);
+
 }
