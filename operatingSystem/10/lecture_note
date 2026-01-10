@@ -1,0 +1,147 @@
+Deadlock
+Deadlock adalah keadaan dimana 2 atau lebih proses saling menunggu meminta resources untuk
+waktu yang tidak terbatas lamanya. Analoginya seperti pada kondisi jalan raya dimana terjadi
+kemacetan parah. Deadlock adalah efek samping dari sinkronisasi, dimana satu variabel digunakan
+oleh 2 proses. Deadlock bisa digambarkan sebagai berikut:
+Gambar 6.1 Illustration of Deadlock (Sumber: Stallings, W. (2018))
+Kejadian Deadlock selalu tidak lepas dari sumber daya, bahwa hampir seluruhnya merupakan
+masalah sumber daya yang digunakan bersama-sama. Oleh karena itu, kita juga perlu tahu tentang
+jenis sumber daya, yaitu: sumber daya dapat digunakan lagi berulang-ulang dan sumber daya yang
+dapat digunakan dan habis dipakai atau dapat dikatakan sumber daya sekali pakai. Sumber daya ini
+tidak habis dipakai oleh proses mana pun. Tetapi setelah proses berakhir, sumber daya ini
+dikembalikan untuk dipakai oleh proses lain yang sebelumnya tidak kebagian sumber daya ini.
+Contohnya prosesor, Channel I/O, disk, semaphore. Contoh peran sumber daya jenis ini pada
+terjadinya Deadlock ialah misalnya sebuah proses memakai disk A dan B, maka akan terjadi
+Deadlock jika setiap proses sudah memiliki salah satu disk dan meminta disk yang lain. Masalah ini
+tidak hanya dirasakan oleh pemrogram tetapi oleh seorang yang merancang sebuah sistem operasi.
+Cara yang digunakan pada umumnya dengan cara memperhitungkan dahulu sumber daya yang
+digunakan oleh proses-proses yang akan menggunakan sumber daya tersebut. Contoh lain yang
+menyebabkan Deadlock dari sumber yang dapat dipakai berulang-ulang ialah berkaitan dengan
+jumlah proses yang memakai memori utama.
+Ada empat kondisi yang dapat menyebabkan terjadinya deadlock. Keempat kondisi tersebut tidak
+dapat berdiri sendiri, namun saling mendukung, yaitu:
+1. Mutual Exclusion
+Hanya ada satu proses yang boleh memakai sumber daya, dan proses lainyang ingin memakai
+sumber daya tersebut harus menunggu hingga sumber daya tadi dilepaskan atau tidak ada proses
+yang memakai sumber daya tersebut.
+2. Hold and Wait
+1.1
+Deadlock
+© BINUS ONLINE || Sistem Operasi 3
+06
+Proses yang sedang memakai sumber daya boleh meminta sumber daya lagimaksudnya menunggu
+hingga benar-benar sumber daya yang diminta tidak dipakai oleh proses lain, hal ini dapat
+menyebabkan kelaparan sumber daya sebab dapat saja sebuah proses tidak mendapat sumber daya
+dalam waktu yang lama.
+3. No Preemption
+Sumber daya yang ada pada sebuah proses tidak boleh diambil begitu saja oleh proses lainnya. Untuk
+mendapatkan sumber daya tersebut, maka harus dilepaskan terlebih dahulu oleh proses yang
+memegangnya, selain itu seluruh proses menunggu dan mempersilahkan hanya proses yang
+memiliki sumber daya yang boleh berjalan.
+4. Circular Wait
+Kondisi seperti rantai, yaitu sebuah proses membutuhkan sumber daya yang dipegang proses
+berikutnya.
+Strategi mengatasi Deadlock
+Ada beberapa cara untuk menanggulangi terjadinya deadlock, diantaranya adalah:
+▪ Mengabaikan masalah deadlock.
+▪ Mendeteksi dan memperbaiki
+▪ Penghindaran yang terus menerus dan pengalokasian yang baik dengan menggunakan
+protocol untuk memastikan sistem tidak pernah memasuki keadaan deadlock. Yaitu dengan
+deadlock avoidance sistem untuk mendata informasi tambahan tentang proses mana yang
+akan meminta dan menggunakan sumber daya.
+▪ Pencegahan yang secara struktur bertentangan dengan empat kondisi terjadinya deadlock
+dengan deadlock prevention sistem untuk memastikan bahwa salah satu kondisi yang
+pentingtidak dapat menunggu.
+Mengabaikan Masalah Deadlock
+Untuk memastikan sistem tidak memasuki deadlock, sistem dapat menggunakan pencegahan
+deadlock atau penghindaran deadlock. Penghindaran deadlock membutuhkan informasi tentang
+sumber daya yang mana yang akan suatu proses meminta dan berapa lama akan digunakan.
+Denganinformasi tersebut dapat diputuskan apakah suatu proses harus menunggu atau tidak.
+Hal ini disebabkan oleh keberadaan sumber daya, apakah ia sedang digunakan oleh proses lain atau
+tidak.Metode ini lebih dikenal dengan Algoritma Ostrich. Dalam algoritma ini dikatakan bahwa
+untukmenghadapi Deadlock ialah dengan berpura-pura bahwa tidak ada masalah apa pun. Hal ini
+seakanakan melakukan suatu hal yang fatal, tetapi sistem operasi Unix menanggulangi Deadlock
+dengan cara ini dengan tidak mendeteksi Deadlock dan membiarkannya secara otomatis mematikan
+program sehingga seakan-akan tidak terjadi apa pun. Jadi jika terjadi Deadlock, maka tabel akan
+penuh,sehingga proses yang menjalankan proses melalui operator harus menunggu pada waktu
+tertentu dan mencoba lagi.
+Deadlock
+© BINUS ONLINE || Sistem Operasi 4
+06
+Mendeteksi dan Memperbaiki
+Caranya ialah dengan cara mendeteksi jika terjadi deadlock pada suatu proses maka dideteksi sistem
+mana yang terlibat di dalamnya.
+Setelah diketahui sistem mana saja yang terlibat maka diadakanproses untuk memperbaiki dan
+menjadikan sistem berjalan kembali.Jika sebuah sistem tidak memastikan deadlock akan terjadi, dan
+juga tidak didukung denganpendeteksian deadlock serta pencegahannya, maka kita akan sampai
+pada kondisi deadlock yang dapat berpengaruh terhadap performance sistem karena sumber daya
+tidak dapat digunakan olehproses sehingga proses-proses yang lain juga terganggu.
+Akhirnya sistem akan berhenti dan harus direstart.Hal-hal yang terjadi dalam mendeteksi adanya
+Deadlock adalah:
+▪ Permintaan sumber daya dikabulkan selama memungkinkan.
+▪ Sistem operasi memeriksa adakah kondisi circular wait secara periodik.
+▪ Pemeriksaan adanya deadlock dapat dilakukan setiap ada sumber daya yang hendak
+digunakan oleh sebuah proses.
+Memeriksa dengan algoritma tertentu.
+Ada beberapa jalan untuk kembali dari Deadlock, yaitu:
+▪ Lewat Preemption
+Dengan cara untuk sementara waktu menjauhkan sumber daya dari pemakainya, dan
+memberikannya pada proses yang lain. Ide untuk memberi pada proses lain tanpa diketahui oleh
+pemilik dari sumber daya tersebut tergantung dari sifat sumber daya itu sendiri. Perbaikan dengan
+cara ini sangat sulit atau dapat dikatakan tidak mungkin. Cara ini dapat dilakukan dengan memilih
+korban yang akan dikorbankan atau diambil sumber dayanya untuk sementara, tentu saja harus
+dengan perhitungan yang cukup agar waktu yang dikorbankan seminimal mungkin. Setelah kita
+melakukan preemption dilakukan pengkondisian proses tersebut dalam kondisi aman. Setelah itu
+proses dilakukan lagi dalam kondisi aman tersebut.
+▪ Lewat Melacak Kembali
+Setelah melakukan beberapa langkah preemption, maka proses utama yang diambil sumber dayanya
+akan berhenti dan tidak dapat melanjutkan kegiatannya, oleh karena itu dibutuhkan langkah untuk
+kembali pada keadaan aman dimana proses masih berjalan dan memulai proses lagi dari situ. Tetapi,
+untuk beberapa keadaan sangat sulit menentukan kondisi aman tersebut, oleh karena itu umumnya
+dilakukan cara mematikan program tersebut lalu memulai kembali proses. Meski pun
+sebenarnyalebih efektif jika hanya mundur beberapa langkah saja sampai deadlock tidak terjadi lagi.
+Untukbeberapa sistem mencoba dengan cara mengadakan pengecekan beberapa kali secara periodik
+danmenandai tempat terakhir kali menulis ke disk, sehingga saat terjadi deadlock dapat mulai dari
+tempat terakhir penandaannya berada.
+▪ Lewat mematikan proses yang menyebabkan Deadlock
+Cara yang paling umum ialah mematikan semua proses yang mengalami deadlock. Cara ini
+palingumum dilakukan dan dilakukan oleh hampir semua sistem operasi. Namun, untuk beberapa
+Deadlock
+© BINUS ONLINE || Sistem Operasi 5
+06
+sistem kita juga dapat mematikan beberapa proses saja dalam siklus deadlock untuk menghindari
+deadlock dan mempersilahkan proses lainnya kembali berjalan. Atau dipilih salah satu korban
+untukmelepaskan sumber dayanya, dengan cara ini maka masalah pemilihan korban menjadi lebih
+selektif, sebab telah diperhitungkan beberapa kemungkinan jika si proses harus melepaskan sumber
+dayanya. Kriteria pemilihan korban ialah:
+▪ Yang paling jarang memakai prosesor
+▪ Yang paling sedikit hasil programnya
+▪ Yang paling banyak memakai sumber daya sampai saat ini
+▪ Yang alokasi sumber daya totalnya tersedkit
+▪ Yang memiliki prioritas terkecil
+Menghindari Deadlock
+Pada sistem kebanyakan permintaan terhadap sumber daya dilakukan sebanyak sekali saja.
+Sistemsudah harus dapat mengenali bahwa sumber daya itu aman atau tidak (tidak terkena
+deadlock), setelah itu baru dialokasikan.
+Ada dua cara yaitu:
+1. Jangan memulai proses apa pun jika proses tersebut akan membawanya pada kondisi
+deadlock, sehingga tidak mungkin terjadi deadlock karena pada saat akan menuju deadlock,
+proses sudah dicegah.
+2. Jangan memberi kesempatan pada suatu proses untuk meminta sumber daya lagi jika
+penambahan ini akan membawa kita pada suatu keadaan deadlock. Jadi diadakan dua kali
+penjagaan, yaitu saat pengalokasian awal, dijaga agar tidak deadlock dan ditambah dengan
+penjagaan kedua saat suatu proses meminta sumber daya, dijaga agar jangan sampai terjadi
+deadlock. Pada sistem deadlock avoidance (penghindaran) dilakukan dengan cara
+memastikan bahwa program memiliki maksimum permintaan. Dengan kata lain cara sistem
+ini memastikan terlebih dahulu bahwa sistem akan selalu dalam kondisi aman. Baik
+mengadakan permintaan awal atau pun saat meminta permintaan sumber daya tambahan,
+sistem harus selalu berada dalam kondisi aman.
+Resource Allocation Graph
+Resource allocation graph digunakan untuk mendeteksi deadlock. Kondisi suatu saat tertentu akan
+di representasikan dengan graph sebagai berikut
+Gambar 6.2 Resource is requested and Resource is held
+Deadlock
+© BINUS ONLINE || Sistem Operasi 6
+06
+Jika graph membentuk satu putaran (cycle) maka terdeteksi deadlock.
+Gambar 6.3 Circular wait
