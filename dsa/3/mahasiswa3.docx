@@ -1,0 +1,61 @@
+class Mahasiswa {
+    String nama;
+    String nim;
+    String jurusan;
+    private double ipk;
+
+    Mahasiswa(String nama, String nim, String jurusan, double ipk) {
+        this.nama = nama;
+        this.nim = nim;
+        this.jurusan = jurusan;
+        this.ipk = ipk;
+    }
+
+    public double getIpk() {
+        return ipk;
+    }
+
+    public void setIpk(double ipk) {
+        this.ipk = ipk;
+    }
+
+    public void cekKelulusan() {
+        if (ipk >= 3.00) {
+            System.out.println("Status: Lulus");
+        } else {
+            System.out.println("Status: Belum Lulus");
+        }
+    }
+
+    public void hitungPredikat() {
+        if (ipk >= 3.75) {
+            System.out.println("Predikat: Dengan Pujian");
+        } else if (ipk >= 3.50) {
+            System.out.println("Predikat: Sangat Memuaskan");
+        } else if (ipk >= 3.00) {
+            System.out.println("Predikat: Memuaskan");
+        } else {
+            System.out.println("Predikat: Perlu Perbaikan");
+        }
+    }
+
+    public void tampilkanInfo() {
+        System.out.println("=== Data Mahasiswa ===");
+        System.out.println("Nama: " + nama);
+        System.out.println("NIM: " + nim);
+        System.out.println("Jurusan: " + jurusan);
+        System.out.println("IPK: " + ipk);
+        cekKelulusan();
+        hitungPredikat();
+        System.out.println();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        Mahasiswa m1 = new Mahasiswa("Citra Lestari","2440003","Teknik Informatika",3.90);
+
+        m1.tampilkanInfo();
+    }
+}
