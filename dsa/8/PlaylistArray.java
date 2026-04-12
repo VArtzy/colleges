@@ -51,17 +51,23 @@ public class PlaylistArray {
 
     // Untuk menampilkan lagu yang ada di playlist dan sudah mengurutkan berdasarkan durasi
     public void tampilkanSemuaLagu() {
-        // Panggil fungsi sorting 
-        urutkanLaguBerdasarkanDurasi();
-
-        System.out.println("\n=== DAFTAR PLAYLIST (Terurut Berdasarkan Durasi) ===");
+        System.out.println("\n=== DAFTAR PLAYLIST (Sebelum Diurutkan) ===");
         if (jumlahLagu == 0) {
             System.out.println("Playlist kosong.");
-        } else {
-            for (int i = 0; i < jumlahLagu; i++) {
-                System.out.print((i + 1) + ". ");
-                playlist[i].tampilkanInfo();
-            }
+            return;
+        }
+        for (int i = 0; i < jumlahLagu; i++) {
+            System.out.print((i + 1) + ". ");
+            playlist[i].tampilkanInfo();
+        }
+
+        // Panggil sorting setelah tampil versi asli
+        urutkanLaguBerdasarkanDurasi();
+
+        System.out.println("\n=== DAFTAR PLAYLIST (Sesudah Diurutkan Berdasarkan Durasi) ===");
+        for (int i = 0; i < jumlahLagu; i++) {
+            System.out.print((i + 1) + ". ");
+            playlist[i].tampilkanInfo();
         }
     }
 
