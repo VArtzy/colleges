@@ -4,9 +4,12 @@ public class CircularLinkedList {
     class Node {
         int data;
         Node next;
+
+        // Membuat node baru.
         Node(int d) { data = d; next = null; }
     }
 
+    // Menambah node di awal list.
     void insertHead(int data) {
         Node newNode = new Node(data);
         if (head == null) { head = newNode; newNode.next = head; return; }
@@ -17,6 +20,7 @@ public class CircularLinkedList {
         curr.next = head;
     }
 
+    // Menambah node di akhir list.
     void insertTail(int data) {
         Node newNode = new Node(data);
         if (head == null) { head = newNode; newNode.next = head; return; }
@@ -26,6 +30,7 @@ public class CircularLinkedList {
         newNode.next = head;
     }
 
+    // Menambah node pada posisi tertentu.
     void insertMiddle(int data, int pos) {
         Node newNode = new Node(data);
         if (pos == 0) { insertHead(data); return; }
@@ -35,6 +40,7 @@ public class CircularLinkedList {
         curr.next = newNode;
     }
 
+    // Menghapus node pertama.
     void deleteFirst() {
         if (head == null) return;
         if (head.next == head) { head = null; return; }
@@ -44,6 +50,7 @@ public class CircularLinkedList {
         curr.next = head;
     }
 
+    // Menghapus node terakhir.
     void deleteLast() {
         if (head == null) return;
         if (head.next == head) { head = null; return; }
@@ -52,6 +59,7 @@ public class CircularLinkedList {
         curr.next = head;
     }
 
+    // Menghapus node pada posisi tertentu.
     void deleteMiddle(int pos) {
         if (head == null) return;
         if (pos == 0) { deleteFirst(); return; }
@@ -60,6 +68,7 @@ public class CircularLinkedList {
         curr.next = curr.next.next;
     }
 
+    // Menampilkan isi list.
     void print() {
         if (head == null) return;
         Node curr = head;
@@ -67,6 +76,7 @@ public class CircularLinkedList {
         System.out.println("(back to head: " + head.data + ")");
     }
 
+    // Menjalankan contoh operasi circular linked list.
     public static void main(String[] args) {
         CircularLinkedList list = new CircularLinkedList();
 

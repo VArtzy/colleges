@@ -4,15 +4,19 @@ public class LinkedList {
     class Node {
         int data;
         Node next;
+
+        // Membuat node baru.
         Node(int d) { data = d; next = null; }
     }
 
+    // Menambah node di awal list.
     void insertHead(int data) {
         Node newNode = new Node(data);
         newNode.next = head;
         head = newNode;
     }
 
+    // Menambah node di akhir list.
     void insertTail(int data) {
         Node newNode = new Node(data);
         if (head == null) { head = newNode; return; }
@@ -21,6 +25,7 @@ public class LinkedList {
         curr.next = newNode;
     }
 
+    // Menambah node pada posisi tertentu.
     void insertMiddle(int data, int pos) {
         Node newNode = new Node(data);
         if (pos == 0) { newNode.next = head; head = newNode; return; }
@@ -31,12 +36,14 @@ public class LinkedList {
         curr.next = newNode;
     }
 
+    // Menampilkan isi list.
     void print() {
         Node curr = head;
         while (curr != null) { System.out.print(curr.data + " "); curr = curr.next; }
         System.out.println();
     }
 
+    // Menjalankan contoh operasi penyisipan linked list.
     public static void main(String[] args) {
         LinkedList list = new LinkedList();
 

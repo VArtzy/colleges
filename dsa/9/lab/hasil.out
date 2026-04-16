@@ -1,0 +1,16 @@
+Array Traversal: [10, 20, 30, 40, 50]
+ArrayList Traversal: [10, 20, 30, 40, 50]
+
+Pencarian 30 dalam Array: Ditemukan di indeks 2
+Pencarian 30 dalam ArrayList: Ditemukan di indeks 2
+
+Array setelah penyisipan 25: [10, 20, 25, 30, 40, 50]
+ArrayList setelah penyisipan 25: [10, 20, 25, 30, 40, 50]
+
+Array setelah penghapusan indeks 2: [10, 20, 30, 40, 50]
+ArrayList setelah penghapusan indeks 2: [10, 20, 30, 40, 50]
+
+ Operasi           Array (ms)      ArrayList (ms) 
+ Pencarian         0.0020          0.0015        
+ Penyisipan        0.0030          0.0025        
+ Penghapusan       0.0010          0.0008        
